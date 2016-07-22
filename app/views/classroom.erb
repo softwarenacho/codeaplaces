@@ -1,0 +1,28 @@
+<div id="classroom<%= @room %>" class="classroom">
+	<table>
+		<thead>
+			<tr>
+				<td colspan="8">Salón <%= @room %></td>
+			</tr>
+		</thead>
+		<tbody>
+			<% counter = 1  %>
+			<% 4.times do %>
+				<tr>
+					<% 8.times do %>
+						<td>
+							<% counter = "0#{counter}" if counter < 10 %>
+							<div class="spot" id="room<%= @room %>spot<%= counter %>">
+								<span id="<%= @room %>student_spot<%= counter %>"></span><br>
+								<span id="<%= @room %>spot_number<%= counter %>"></span>
+								<span id="<%= @room %>mac_spot<%= counter %>"></span>
+							</div>
+						</td>
+						<% counter = counter.to_i %>
+						<% counter += 1 %>
+					<% end %>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

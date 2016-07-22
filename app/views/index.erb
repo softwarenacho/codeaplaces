@@ -1,4 +1,39 @@
-<h1>Bienvenido a CodeaPlaces</h1>
+<h1>Bienvenido a CodeaSpots</h1>
 <p>Administrador de espacios CodeaCamp</p>
 
-  
+<div id="student_table" class="content">
+	<% count = 0 %>
+	<table>
+		<thead>
+			<th></th>
+			<th>#</th>
+			<th>ID</th>
+			<th>Nombre</th>
+			<th>Modo</th>
+			<th>Fase</th>
+			<th>Inicio</th>
+		</thead>
+		<tbody>
+			<% @students.each do |stu| %>
+				<% if Time.parse(stu.init_date) < Time.now %>
+					<tr id = "stu<%= stu.codea_id %>" class="student">
+						<td><img src="/img/menu.png" class="handle"></td>
+						<td><%= count %></td>
+						<td><%= stu.codea_id %></td>
+						<td><%= stu.name %></td>
+						<td><%= stu.fase %></td>
+						<td><%= stu.mode %></td>
+						<td><%= stu.init_date %></td>
+					</tr>						
+					<% count += 1 %>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+</div> 
+
+<% @room = 1 %>
+<%= erb(:classroom)%>
+
+<% @room = 2 %>
+<%= erb(:classroom)%>
